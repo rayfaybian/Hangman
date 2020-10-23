@@ -6,7 +6,7 @@ namespace Hangman
     {
         static void Main(string[] args)
         {
-            
+
             var input = "";
             var isRunning = true;
             var gameOver = false;
@@ -34,7 +34,7 @@ namespace Hangman
                 {
                     case "s":
                         Word myWord = new Word();
-                        Console.WriteLine(myWord.word);
+                        //Console.WriteLine(myWord.word);
                         var newGame = true;
                         gameOver = false;
 
@@ -52,7 +52,6 @@ namespace Hangman
 
                         }
                         CheckGameResult(myWord, strikeCounter);
-
                         break;
 
                     case "b":
@@ -64,7 +63,6 @@ namespace Hangman
                         break;
                 }
             }
-
         }
 
         public static void Game(Word word, bool newGame)
@@ -76,7 +74,8 @@ namespace Hangman
                     Console.WriteLine($"\nDas gesuchte Wort hat {wordLength} Buchstaben: {word.visibleWord}\n\n");
                     break;
                 case false:
-                    if (CountRemainingLetters(word).Equals(1)){
+                    if (CountRemainingLetters(word).Equals(1))
+                    {
                         Console.WriteLine($"\nEs fehlt nur noch {CountRemainingLetters(word)} Buchstabe: {word.visibleWord}\n\n");
                     }
                     Console.WriteLine($"\nEs fehlen noch {CountRemainingLetters(word)} Buchstaben: {word.visibleWord}\n\n");
@@ -128,7 +127,6 @@ namespace Hangman
         public static bool CheckIfLetterAlreadySolved(Word word, String input)
         {
             var letterAlreadySolved = false;
-
             char letter = Convert.ToChar(input.ToUpper());
             char[] visibleWordChar = word.visibleWord.ToCharArray();
 
@@ -164,7 +162,7 @@ namespace Hangman
         {
             var remainingLetters = 0;
             char[] letters = word.visibleWord.ToCharArray();
-            foreach (char element in letters)
+            foreach (var element in letters)
             {
                 if (element.Equals('.'))
                 {

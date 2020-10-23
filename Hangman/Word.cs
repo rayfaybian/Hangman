@@ -13,27 +13,23 @@ namespace Hangman
         public string visibleWord { get; set; }
 
         private string[] wordfile = System.IO.File.ReadAllLines("C:\\Coding\\C#\\Hangman\\Hangman\\words.txt");
-   
+
         List<string> wordlist = new List<string>();
 
         public Word()
         {
             SelectNewWord();
-
         }
 
         public void SelectNewWord()
         {
-
             foreach (string element in wordfile)
             {
                 wordlist.Add(element.Split(";").FirstOrDefault());
-
             }
 
             Random random = new Random();
             int i = random.Next(wordlist.Count());
-
             word = wordlist.ElementAt(i);
 
             char[] letterCount = word.ToCharArray();
@@ -45,7 +41,6 @@ namespace Hangman
                 counter++;
             }
             visibleWord = new string(placeholder);
-
         }
     }
 }
